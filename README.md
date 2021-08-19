@@ -49,7 +49,7 @@ O retorno da procedure criada terá as definições da classe abaixo, gerada pel
         public Nullable<decimal> Comissionamento { get; set; }
     }
     
-5 - Dentro da classe VendasRepositorio do repositorio o retorno foi tratado com um metodo "MapearModelo"(Se encontra na pasta models do projeto GeapComissoesConcessionaria), abaixo está as propriedades da mesma:
+5 - Dentro da classe VendasRepositorio do repositorio o retorno foi tratado com um metodo "MapearModelo" ultilizando a classe ListarComissionamentoModelo(localizada na pasta models), abaixo está as propriedades da mesma:
 
 public class ListarComissionamentoModelo
     {
