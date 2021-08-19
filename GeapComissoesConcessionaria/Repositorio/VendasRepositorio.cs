@@ -15,11 +15,16 @@ namespace GeapComissoesConcessionaria.Repositorio
             using (DBCONCESSIONARIAEntities db = new DBCONCESSIONARIAEntities())
             {
                 var vendas = db.ListarComissoesVendedores();
+                if (vendas == null)
+                {
+                    return new List<ListarComissionamentoModelo>();
+                }
+
                 return vendas.Select(x => MapearModelo(x)).ToList();
             }
 
         }
-        public ListarComissionamentoModelo MapearModelo(ListarComissoesVendedores_Result obj)
+        private ListarComissionamentoModelo MapearModelo(ListarComissoesVendedores_Result obj)
         {
             var modelo = new ListarComissionamentoModelo();
 
