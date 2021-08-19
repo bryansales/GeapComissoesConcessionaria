@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Grafico Vendas";
+}
+
+<h2>Grafico de Vendas</h2>
+
+<div>
+    <canvas id="grafico" width="400" height="150"></canvas>
+</div>
+@section scripts{
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/Chart.js"></script>
+    <script>
+        $(document).ready(function () {
+  $.ajax({
+                type: "POST",
+                url:  '@Url.Action("Grafico")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (mems) {
+                    var aData = mems;
+                    var aLabels = aData[0];
+                    var aDatasets1 = aData[1];
+                    var dataT = {
+                        labels: aLabels,
+                        datasets: [{
+                            label: "Vendas",
+                            data: aDatasets1,
+                            fill: false,
+                            backgroundColor: ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+                            borderColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                            borderWidth: 1
+                        }]
+                    };
+                    var ctx = $("#grafico").get(0).getContext("2d");
+                    var myNewChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: dataT,
+                        options: {
+                            responsive: true,
+                            title: { display: true, text: 'Valor total de vendas por funcionario' },
+                            legend: { position: 'bottom' },
+                            scales: {
+                                xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                                yAxes: [{
+                                    gridLines: { display: false },
+                                    display: true,
+                                    scaleLabel: { display: true, labelString: '' },
+                                    ticks: {
+                                        // Include a dollar sign in the ticks
+                                        callback: function (value, index, values) {
+                                            return 'R$' + value;
+                                        },
+                                        beginAtZero: true
+                                    }
+                                }]
+                            },
+                        }
+                    });
+                }
+        });
+        });
+
+
+
+    </script>
+}

@@ -1,0 +1,20 @@
+ALTER PROCEDURE ListarComissoesVendedores
+AS
+
+  SELECT  
+vnd.NmeVendedor as NomeVendedor,
+v.IdeVenda as IdVenda,
+v.VlrPrecoVenda as Valor,
+v.StaValeCombustivel as ValeCombustivel,
+case v.StaValeCombustivel when 0 then v.VlrPrecoVenda * 0.01 else 
+case c.IdeCombustivel 
+when 1 then (case when((v.VlrPrecoVenda * 0.01) - 200) <= 0 then 0 else (v.VlrPrecoVenda * 0.01) - 200 end)  
+when 2 then (case when((v.VlrPrecoVenda * 0.01) - 180) <= 0 then 0 else (v.VlrPrecoVenda * 0.01) - 200 end) 
+when 3 then  (case when((v.VlrPrecoVenda * 0.01) - 200) <= 0 then 0 else (v.VlrPrecoVenda * 0.01) - 200 end)end end as Comissionamento
+
+FROM dbo.VND002_VENDA v 
+join dbo.VND001_VENDEDOR vnd on vnd.IdeVendedor = v.IdeVendedor
+join dbo.VEI004_MODELO_VERSAO versao on versao.IdeModeloVersao = v.IdeModeloVersao
+join dbo.VEI003_COMBUSTIVEL c on c.IdeCombustivel = versao.IdeCombustivel
+
+GO

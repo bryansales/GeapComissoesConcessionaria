@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dbc93066fbae491d8faba44d0c09c2ed" Name="Diagram1">
+        <EntityTypeShape EntityType="DBCONCESSIONARIAModel.VEI001_MARCA" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCONCESSIONARIAModel.VEI002_MODELO" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCONCESSIONARIAModel.VEI003_COMBUSTIVEL" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCONCESSIONARIAModel.VEI004_MODELO_VERSAO" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCONCESSIONARIAModel.VND001_VENDEDOR" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCONCESSIONARIAModel.VND002_VENDA" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DBCONCESSIONARIAModel.FK_VEI002_IdeMarca" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCONCESSIONARIAModel.FK_VEI004_IdeModelo" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCONCESSIONARIAModel.FK_VEI004_IdeCombustivel" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCONCESSIONARIAModel.FK_VND002_IdeModeloVersao" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCONCESSIONARIAModel.FK_VND002_IdeVendedor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

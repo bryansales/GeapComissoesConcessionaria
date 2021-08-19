@@ -1,0 +1,84 @@
+﻿@model IEnumerable<GeapComissoesConcessionaria.Models.ListarComissionamentoModelo>
+
+@{
+
+}
+
+<h2>Relatorio de vendas</h2>
+
+
+<table class="vendas" id="TableVendas">
+    <thead>
+        <tr>
+            <th>Nome Vendedor</th>
+            <th>Quantidade de veículos vendidos</th>
+            <th>Quantidade de vales combutíveis emitidos</th>
+            <th>Total em vendas</th>
+            <th>Total da comissão</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.GroupBy(x => x.NomeVendedor))
+            {
+
+                <tr style="text-align:center">
+                    <th align="center">
+                        @item.Key
+                    </th>
+                    <th align="center">
+                        @item.Count()
+                    </th>
+                    <th>
+                        @item.Where(x => x.ValeCombustivel == true).Count()
+                    </th>
+                    <th>
+                        @item.Sum(x => x.Valor).ToString("c")
+                    </th>
+                    <th>
+                        @item.Sum(x => x.Comissionamento).GetValueOrDefault().ToString("c")
+                    </th>
+                </tr>
+
+            }
+        }
+
+    </tbody>
+
+
+
+
+
+</table>
+
+<script src="~/Scripts/dataTables/js/jquery.js"></script>
+<script src="~/Scripts/dataTables/js/jquery.dataTables.js"></script>
+<script>
+    $('.vendas').dataTable({
+        "language": {
+            "loadingRecords": "Carregando...",
+            "sProcessing": "processando...",
+            "sZeroRecords": "sem registros",
+            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_",
+            "sInfoEmpty": "0 até 0 de 0 registros",
+            "sInfoFiltered": "(localizados de _MAX_  registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Pesquisar:",
+            "sUrl": "",
+            "oPaginate": {
+                "First": "<<",
+                "sPrevious": "<",
+                "sNext": ">",
+                "sLast": ">>"
+            }
+        },
+        "bLengthChange": false,
+        "pageLength": 10
+    });
+
+</script>
+
+
+
