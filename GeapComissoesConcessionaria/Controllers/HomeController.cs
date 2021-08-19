@@ -17,7 +17,7 @@ namespace GeapComissoesConcessionaria.Controllers
             return View();
         }
 
-
+        #region Grafico
         public ActionResult Grafico()
         {
             GeapComissoesConcessionaria.Repositorio.VendasRepositorio vendasRepo = new GeapComissoesConcessionaria.Repositorio.VendasRepositorio();
@@ -54,7 +54,9 @@ namespace GeapComissoesConcessionaria.Controllers
 
             return View("GraficoVendas");
         }
+        #endregion
 
+        #region RelatorioVendas
         public ActionResult RelatorioVendas()
         {
 
@@ -64,5 +66,6 @@ namespace GeapComissoesConcessionaria.Controllers
 
             return View("RelatorioVendas", vendas);
         }
+        #endregion
     }
 }
