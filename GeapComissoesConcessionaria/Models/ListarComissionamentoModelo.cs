@@ -12,6 +12,5 @@ namespace GeapComissoesConcessionaria.Models
         public decimal Valor { get; set; }
         public bool ValeCombustivel { get; set; }
         public Nullable<decimal> Comissionamento { get; set; }
-        public int QtdVendas { get; set; }
     }
 }

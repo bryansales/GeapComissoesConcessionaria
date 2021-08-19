@@ -1,7 +1,7 @@
 ALTER PROCEDURE ListarComissoesVendedores
 AS
 
-  SELECT  
+  SELECT DISTINCT  
 vnd.NmeVendedor as NomeVendedor,
 v.IdeVenda as IdVenda,
 v.VlrPrecoVenda as Valor,
